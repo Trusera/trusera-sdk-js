@@ -116,7 +116,7 @@ export class TruseraInterceptor {
     }
 
     globalThis.fetch = this.createInterceptedFetch();
-    activeInterceptor = this;
+    activeInterceptor = this; // eslint-disable-line @typescript-eslint/no-this-alias
     this.isInstalled = true;
 
     this.log("Interceptor installed", {
@@ -150,7 +150,7 @@ export class TruseraInterceptor {
    * This is the core of the interception logic.
    */
   private createInterceptedFetch(): typeof globalThis.fetch {
-    const self = this;
+    const self = this; // eslint-disable-line @typescript-eslint/no-this-alias
 
     return async function interceptedFetch(
       input: RequestInfo | URL,
