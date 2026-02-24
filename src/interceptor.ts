@@ -154,7 +154,7 @@ export class TruseraInterceptor {
     const self = this; // eslint-disable-line @typescript-eslint/no-this-alias
 
     return async function interceptedFetch(
-      input: RequestInfo | URL,
+      input: string | Request | URL,
       init?: RequestInit
     ): Promise<Response> {
       // Ensure we have original fetch to fall back to
@@ -284,7 +284,7 @@ export class TruseraInterceptor {
    * Extracts request data for policy evaluation and tracking.
    */
   private async extractRequestData(
-    input: RequestInfo | URL,
+    _input: string | Request | URL,
     init?: RequestInit
   ): Promise<{ headers: Record<string, string>; body: string | null }> {
     const headers: Record<string, string> = {};
@@ -296,8 +296,8 @@ export class TruseraInterceptor {
           headers[key] = value;
         });
       } else if (Array.isArray(init.headers)) {
-        for (const [key, value] of init.headers) {
-          headers[key] = value;
+        for (const pair of init.headers as [string, string][]) {
+          headers[pair[0]] = pair[1];
         }
       } else {
         Object.assign(headers, init.headers);
