@@ -1,3 +1,5 @@
+import { randomUUID } from "node:crypto";
+
 /**
  * Event types tracked by the Trusera SDK.
  * These align with the core observability primitives for AI agent monitoring.
@@ -63,7 +65,7 @@ export function createEvent(
   metadata: Record<string, unknown> = {}
 ): Event {
   return {
-    id: crypto.randomUUID(),
+    id: randomUUID(),
     type,
     name,
     payload: { ...payload },
