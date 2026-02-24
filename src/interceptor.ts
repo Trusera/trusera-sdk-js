@@ -139,6 +139,7 @@ export class TruseraInterceptor {
     }
 
     activeInterceptor = null;
+    originalFetch = null;
     this.isInstalled = false;
     this.client = null;
 

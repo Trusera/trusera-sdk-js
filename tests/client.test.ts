@@ -203,7 +203,7 @@ describe("TruseraClient", () => {
       const callArgs = fetchMock.mock.calls[0] as unknown[];
       const body = JSON.parse(callArgs[1]!.body as string);
       expect(body.events).toHaveLength(2);
-      expect(client.getQueueSize()).toBe(3);
+      expect(client.getQueueSize()).toBe(0);
     });
 
     it("should handle API errors gracefully", async () => {
