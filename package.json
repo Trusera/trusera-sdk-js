@@ -28,7 +28,7 @@
     "build": "tsc",
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "eslint src/",
+    "lint": "eslint *.ts integrations/",
     "prepublishOnly": "npm run build"
   },
   "files": [
