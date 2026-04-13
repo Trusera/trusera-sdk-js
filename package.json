@@ -2,8 +2,15 @@
   "name": "trusera-sdk",
   "version": "0.1.0",
   "description": "TypeScript SDK for monitoring AI agents with Trusera - intercept HTTP, evaluate policies",
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
